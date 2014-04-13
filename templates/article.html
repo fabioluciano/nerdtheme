@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title|striptags }} - {{ SITENAME }} - {{ SITESUBNAME }}{% endblock %}
+{% block content %}
+    {% include 'includes/article_structure.html' %}
+    {% include 'includes/article_comments.html' %}
+    {% include 'includes/article_neighbors.html' %}
+{% endblock %}

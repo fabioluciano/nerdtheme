@@ -1,0 +1,10 @@
+<article>
+    <header>
+        <h1><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
+    </header>
+    {% include "includes/article_info.html" %}
+    <section class="post-entry">
+        {{ article.content }}
+    </section>
+    {% include "includes/article_taglist.html" %}
+</article>

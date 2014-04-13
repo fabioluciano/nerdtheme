@@ -1,0 +1,10 @@
+{% if article.tags %}
+<footer class="post-more">
+    Tags:
+    <ul class="tags">
+        {% for tag in article.tags %}
+        <li><a class="label round" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></a></li>
+        {% endfor%}
+    </ul>
+</footer>
+{% endif %}

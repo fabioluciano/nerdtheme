@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" lang="pt-br">
+<head>
+    <title>{% block title %}{{ SITENAME }} - {{ SITESUBNAME }}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if article %}
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ article.title|striptags }}"/>
+    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}"/>
+    <meta property="og:description" content="{{ article.summary|striptags }}"/>
+    {% elif page %}
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ page.title }}"/>
+    <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
+    {% else %}
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ SITENAME }}"/>
+    <meta property="og:url" content="{{ SITEURL }}"/>
+    <meta property="og:description" content="{{ SITENAME }}"/>
+    {% if OPEN_GRAPH_IMAGE %}
+    <meta property="og:image" content="{{ SITEURL }}/static/{{ OPEN_GRAPH_IMAGE }}"/>
+    {% endif %}{% endif %}
+    <link rel="icon" type="image/x-icon" href="{{ SITEURL }}/theme/image/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/foundation.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Patua+One|Bangers|Gochi+Hand' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/stylesheet/main.css" id="custom">
+
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+    <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed"/>
+    {% endif %}
+</head>
+<body>
+<div class="row">
+    {% include 'includes/template_main_navigation.html' %}
+</div>
+    <header id="blog-title" class="row">
+      <div id="icon-glasses">
+<img src="/theme/image/glasses.png">
+</div>
+<hgroup>
+    <h1><a href="/">{{ SITENAME }}</a></h1>
+    <h2>{{ SITESUBNAME }}</h2>
+</hgroup>
+</header>
+
+<div id="content" class="row">
+    <div id="wrapper" class="large-12 columns">
+        <section id="col-left" class="large-9 columns">
+            {% block content %}
+            {% endblock %}
+        </section>
+        <aside id="col-right" class="large-3 columns hide-for-small">
+            {% include 'includes/template_sidebar.html' %}
+        </aside>
+    </div>
+</div>
+{% include 'includes/template_tag_cloud.html' %}
+{% include 'includes/template_footer.html' %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/js/foundation.min.js"></script>
+<script src="{{ SITEURL }}/theme/javascript/main.js"></script>
+{% include 'includes/template_google_analytics.html' %}
+{% include 'includes/template_addthis.html' %}
+</body>
+</html>

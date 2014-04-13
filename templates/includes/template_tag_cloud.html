@@ -1,0 +1,16 @@
+{% macro render_tag(tag) -%}
+  <a href="{{ SITEURL }}/{{ tag.url }}" rel="tooltip" class="label" data-placement="right" data-original-title="{{ tag.articles }} article{{ 's' if tag.articles > 1 else '' }} with this tag">{{ tag.name }}</a>
+{%- endmacro %}
+
+
+{% macro draw_tag(tag) -%}
+<li><a href="{{ SITEURL }}/{{ tag.0.url }}" rel="tooltip" class="label tag">{{ tag.0 }}</a></li>
+{%- endmacro %}
+
+    <div id="tag-cloud" class="row">
+      <ul>
+        {% for tag in tag_cloud|sort %}
+        {{ draw_tag(tag) }}
+        {% endfor %}
+      </ul>
+    </div>

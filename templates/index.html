@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if articles %}
+        {% for article in (articles_page.object_list if articles_page else articles) %}
+            {% include 'includes/article_structure.html' %}
+        {% endfor %}
+    {% endif %}
+    {% include 'includes/template_pagination.html' %}
+{% endblock content %}

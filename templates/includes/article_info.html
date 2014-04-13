@@ -1,0 +1,9 @@
+<aside class="meta-info">
+    <ul>
+        <li><i class="fa fa-calendar"></i> {{ article.locale_date }}</li>
+        {% if article.author %}
+        <li><i class="fa fa-user"></i><a href="{{ SITEURL }}/{{ article.author.url }}"><i class="icon-user"></i>{{ article.author }}</a></li>
+        {% endif %}
+        <li><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></li>
+    </ul>
+</aside>
